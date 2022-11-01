@@ -34,15 +34,17 @@
                     friends: ['Jordyn', 'Mikenzi', 'Jake'],
                     input: '',
                 }
-
+                this.updateInput = this.updateInput.bind(this)
                 this.handleRemoveFriend = this.handleRemoveFriend.bind(this)
             }
 
             handleAddFriend () {
-
+                this.setState((currentState) => {
+                    
+                })
             }
 
-            handleRemoveFriend (name) {
+            handleRemoveFriend(name) {
                 this.setState((currentState) => {
                     return {
                         friends: currentState.friends.filter((friend) => friend !== name)
@@ -55,13 +57,14 @@
 
                 this.setState(() => ({
                     input: value
-                })
+                }))
             }
+
             render() {
                 return (
                     <div>
                         <input type="text" placeholder='new friend' onChange={this.updateInput} />
-                        <button>Submit</button>
+                        <button onClick={this.handleAddFriend}>Submit</button>
                         <FriendsList list={this.state.friends} />                 
                     </div>
 
